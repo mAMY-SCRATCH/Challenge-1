@@ -10,9 +10,9 @@ import java.util.List;
 
 
 
-import vooban.challenge1.name.NameExtractionInterface;
+import vooban.challenge1.name.NameInputInterface;
 
-public class TxtFileReader implements NameExtractionInterface {
+public class TxtFileReader implements NameInputInterface {
 	
 	private final String txtFileName = "res/prenom.txt";
 	

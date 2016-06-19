@@ -7,13 +7,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import vooban.challenge1.name.NameWritingInterface;
+import vooban.challenge1.name.NameOutputInterface;
 
-public class TxtFileWriter implements NameWritingInterface {
+public class TxtFileWriter implements NameOutputInterface {
 	
 	private final String txtFileName = "res/sortie.txt";
 	@Override
-	public void WriteNames(List<String> namesListToPrint){
+	public void PrintOutput(List<String> namesListToPrint){
 		
 		Path file = Paths.get(txtFileName);
 		
@@ -24,7 +24,5 @@ public class TxtFileWriter implements NameWritingInterface {
 			System.out.println("Could not write in "+txtFileName+" file.");
 		}
 
-			
-		
 	}
 }

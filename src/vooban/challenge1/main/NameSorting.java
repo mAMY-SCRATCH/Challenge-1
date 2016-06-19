@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import vooban.challenge1.name.NameExtractionInterface;
-import vooban.challenge1.name.NameWritingInterface;
+import vooban.challenge1.name.NameInputInterface;
+import vooban.challenge1.name.NameOutputInterface;
+import vooban.challenge1.name.txtFile.AlertWindowOutput;
 import vooban.challenge1.name.txtFile.TxtFileReader;
 import vooban.challenge1.name.txtFile.TxtFileWriter;
 
@@ -15,14 +16,18 @@ public class NameSorting {
 
 	public static void main(String... args)
 	{
-		NameExtractionInterface nameExtraction = new TxtFileReader();
-		NameWritingInterface nameWriting = new TxtFileWriter();
+		NameInputInterface namesExtraction = new TxtFileReader();
 		
-		namesList = nameExtraction.ExtractNames();
+		List<NameOutputInterface> outputNamesMethodList = new ArrayList<NameOutputInterface>();
+		outputNamesMethodList.add(new TxtFileWriter());
+		outputNamesMethodList.add(new AlertWindowOutput());
+		
+		namesList = namesExtraction.ExtractNames();
 		
 		Collections.sort(namesList);
-		
-		nameWriting.WriteNames(namesList);
+		for (NameOutputInterface outputNamesMethod : outputNamesMethodList) {
+			outputNamesMethod.PrintOutput(namesList);
+		}
 		
 	}
 	
